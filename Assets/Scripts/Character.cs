@@ -15,8 +15,8 @@ public class Character : MonoBehaviour
    private bool m_picked;
 
     private bool m_enableIK;
-  private float m_weightIK;
-   private Vector3 m_positionIK;
+    private float m_weightIK;
+    private Vector3 m_positionIK;
 
     public ZombieController m_zombie;
     GameObject zombie;
@@ -52,21 +52,14 @@ public class Character : MonoBehaviour
             m_animator.SetTrigger("Jump");
         }
 
-      
-
     }
 
-    
-
+   
    public void Shoot(bool fire)
     {
         m_animator.SetTrigger("Fire");
     }
-
- 
     
-
-    /*
 
     private void OnTriggerStay(Collider other)
     {
@@ -76,9 +69,10 @@ public class Character : MonoBehaviour
         if(m_picked && pickable != null && !pickable.picked)
         {
             //do the thing
-            // Debug.Log("Picking");
+            Debug.Log("Picking");
             Transform rightHand = m_animator.GetBoneTransform(HumanBodyBones.RightHand);
             pickable.BePicked(rightHand);
+            
 
             m_animator.SetTrigger("Pick");
 
@@ -137,6 +131,6 @@ public class Character : MonoBehaviour
         }
     }
 
-   */
+   
 
 }
