@@ -14,7 +14,7 @@ public class ZombieController : MonoBehaviour
     public float destroyTime;
 
 
-    private Animator m_anim;
+    private Animator m_anim; 
      Character m_character;
 
     // Use this for initialization

@@ -5,12 +5,28 @@ using UnityEngine;
 public class Pickable : MonoBehaviour {
 
     public bool picked;
+    public bool red;
+    public bool blue;
+    public bool green;
+    public int canShootRed;
+    public int canShootBlue;
+    public int canShootGreen;
+
+    private Gun1 m_gun;
+
     
+
+    private void Start()
+    {
+        m_gun = FindObjectOfType<Gun1>();
+        
+    }
 
     public void BePicked(Transform newParent)
     {
         picked = true;
         StartCoroutine(HandlePick(newParent));
+       
     }
 
     IEnumerator HandlePick(Transform newParent)

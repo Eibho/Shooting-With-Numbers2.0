@@ -18,8 +18,8 @@ public class Character : MonoBehaviour
     private float m_weightIK;
     private Vector3 m_positionIK;
 
-    public ZombieController m_zombie;
-    GameObject zombie;
+    public ZombieController m_zombie; //zombie script 
+   
 
 
     // Use this for initialization

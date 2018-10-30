@@ -36,5 +36,10 @@ public class ChangeMaterial : MonoBehaviour {
       
     }
 
-    
+    public void ColourBrown()
+    {
+        rend.sharedMaterial = material[4];
+
+    }
+
 }
