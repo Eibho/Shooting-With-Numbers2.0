@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Character : MonoBehaviour
     private bool m_enableIK;
     private float m_weightIK;
     private Vector3 m_positionIK;
+    public float delay = 5;
 
     public ZombieController m_zombie; //zombie script 
    
@@ -29,7 +31,11 @@ public class Character : MonoBehaviour
         m_animator = GetComponent<Animator>();
 
         m_zombie = FindObjectOfType<ZombieController>();
+
         
+
+
+
     }
 
     public void Update()
@@ -37,7 +43,14 @@ public class Character : MonoBehaviour
         if (m_zombie.playerHealth == 0 )
         {
             m_animator.SetTrigger("Die");
+            StartCoroutine(LoadLevelAfterDelay(delay));
         }
+    }
+
+    IEnumerator LoadLevelAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(0);
     }
 
     public void Move(float turn, float forward, bool jump, bool picked)

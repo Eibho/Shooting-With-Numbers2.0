@@ -4,4 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Shooting With Numbers30.10.unity
+    guid: 7e9dd824cfb434c4ab6fa999b968fe57
+  m_configObjects: {}
