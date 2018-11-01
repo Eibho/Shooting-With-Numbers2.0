@@ -11,17 +11,23 @@ public class ZombieController : MonoBehaviour
 
     public int playerHealth;
     public int zombieHealth;
-    public float destroyTime;
+    float destroyTime;
+
+  //public AudioClip m_idle;
+  //public AudioClip m_walk;
+  //public AudioClip m_die;
 
 
     private Animator m_anim; 
      Character m_character;
+  //private AudioSource m_audioSource;
+
 
     // Use this for initialization
     public void Start()
     {
         m_anim = GetComponent<Animator>();
-      
+     // m_audioSource = GetComponent<AudioSource>();
 
         playerHealth = 3;
 
@@ -43,12 +49,19 @@ public class ZombieController : MonoBehaviour
 
                 m_anim.SetBool("Walk", false);
 
+         // m_audioSource.PlayOneShot(m_idle);
+
+
                 if (direction.magnitude > 2)
                 {
                     this.transform.Translate(0, 0, 0.01f);
                     m_anim.SetBool("Walk", true);
                     m_anim.SetBool("Attack", false);
-                }
+
+           //   m_audioSource.Pause();
+            //  m_audioSource.PlayOneShot(m_walk);
+                
+            }
 
                 if (direction.magnitude <= 2)
                 {
@@ -60,8 +73,10 @@ public class ZombieController : MonoBehaviour
 
                     Debug.Log(playerHealth);
 
+                
 
-                }
+
+            }
 
 
             }
@@ -75,6 +90,9 @@ public class ZombieController : MonoBehaviour
         if (zombieHealth == 0)
         {
             m_anim.SetTrigger("Die");
+
+          //m_audioSource.Stop();
+          //m_audioSource.PlayOneShot(m_die);
 
             Destroy(gameObject, destroyTime);
         }

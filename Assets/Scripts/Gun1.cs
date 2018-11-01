@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun1 : MonoBehaviour {
-    public float range = 1000f; //if player is whithin range it will hit
+    public float range = 100f; //if player is whithin range it will hit
     public GameObject bulletPoint; //where the raycast will shoot from
     private bool m_fire;
     private Character m_character;
     private ZombieController m_zombie;
     private Pickable m_pickScript;
 
+  
+    private AudioSource m_audio;
+    [SerializeField] AudioClip m_gunAudio;
+    [SerializeField] AudioClip m_materialChangeAudio;
 
     private void Start()
     {
@@ -17,13 +21,16 @@ public class Gun1 : MonoBehaviour {
         
         m_zombie = FindObjectOfType<ZombieController>();
         m_pickScript = FindObjectOfType<Pickable>();
+
+        m_audio = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
     void Update () {
 
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
+            m_audio.PlayOneShot(m_gunAudio);
             Debug.Log("ShootZombie");
             m_character.Shoot(m_fire);
             ShootZombie();
@@ -31,7 +38,8 @@ public class Gun1 : MonoBehaviour {
 
         if (Input.GetButtonDown("1") )
         {
-                 m_character.Shoot(m_fire);
+            m_audio.PlayOneShot(m_materialChangeAudio);
+            m_character.Shoot(m_fire);
                 ShootRed();
                 Debug.Log("ShootRed");
           
@@ -39,8 +47,8 @@ public class Gun1 : MonoBehaviour {
 
         if (Input.GetButtonDown("2") )
         {
-            
-                m_character.Shoot(m_fire);
+            m_audio.PlayOneShot(m_materialChangeAudio);
+            m_character.Shoot(m_fire);
                 ShootBlue();
                 Debug.Log("ShootBlue");
         
@@ -48,6 +56,7 @@ public class Gun1 : MonoBehaviour {
 
         if (Input.GetButtonDown("3"))
         {
+            m_audio.PlayOneShot(m_materialChangeAudio);
             m_character.Shoot(m_fire);
             ShootGreen();
             Debug.Log("ShootGreen");
@@ -55,6 +64,7 @@ public class Gun1 : MonoBehaviour {
 
         if (Input.GetButtonDown("4"))
         {
+            m_audio.PlayOneShot(m_materialChangeAudio);
             m_character.Shoot(m_fire);
             ShootBrown();
             Debug.Log("ShootBrown");
