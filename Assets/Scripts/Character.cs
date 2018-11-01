@@ -21,8 +21,9 @@ public class Character : MonoBehaviour
     public float delay = 5;
 
     public ZombieController m_zombie; //zombie script 
-   
 
+    private AudioSource m_audio;
+    [SerializeField] AudioClip m_deathAudio;
 
     // Use this for initialization
     void Start()
@@ -32,7 +33,7 @@ public class Character : MonoBehaviour
 
         m_zombie = FindObjectOfType<ZombieController>();
 
-        
+        m_audio = GetComponent<AudioSource>();
 
 
 
@@ -42,6 +43,7 @@ public class Character : MonoBehaviour
     {
         if (m_zombie.playerHealth == 0 )
         {
+            m_audio.PlayOneShot(m_deathAudio);
             m_animator.SetTrigger("Die");
             StartCoroutine(LoadLevelAfterDelay(delay));
         }
